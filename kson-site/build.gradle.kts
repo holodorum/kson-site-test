@@ -1,6 +1,6 @@
 plugins {
     base
-    kotlin("jvm")
+    kotlin("jvm") version "2.2.10"
     id("com.github.node-gradle.node") version "7.1.0"
 }
 
@@ -24,29 +24,47 @@ repositories {
 }
 
 dependencies {
-    implementation(project(":lib-kotlin"))
+    implementation("org.kson:lib-kotlin:1.0-SNAPSHOT")
     testImplementation(kotlin("test"))
     testImplementation(kotlin("test-junit"))
 }
 
-// Task that depends on lib-kotlin JavaScript production build
+// Build lib-kotlin JavaScript production in kson submodule
+val buildKsonJsLibrary by tasks.registering(Exec::class) {
+    workingDir = file("${rootDir}/kson")
+    commandLine = listOf("./gradlew", ":lib-kotlin:jsBrowserProductionLibraryDistribution")
+}
+
+// Task that copies lib-kotlin JavaScript production build
 val copyKsonApiAssets by tasks.registering(Copy::class) {
-    dependsOn(":lib-kotlin:jsBrowserProductionLibraryDistribution")
-    from("${project(":lib-kotlin").layout.buildDirectory.get()}/dist/js/productionLibrary")
+    dependsOn(buildKsonJsLibrary)
+    from("${rootDir}/kson/lib-kotlin/build/dist/js/productionLibrary")
     into("$projectDir/public/vendor/kson-api")
 }
 
-// Task that depends on monaco build
+// Build monaco in kson submodule
+val buildMonaco by tasks.registering(Exec::class) {
+    workingDir = file("${rootDir}/kson")
+    commandLine = listOf("./gradlew", ":tooling:lsp-clients:npm_run_buildMonaco")
+}
+
+// Task that copies monaco build
 val copyMonacoAssets by tasks.registering(Copy::class) {
-    dependsOn(":tooling:lsp-clients:npm_run_buildMonaco")
-    from("${project(":tooling:lsp-clients").projectDir}/monaco/dist")
+    dependsOn(buildMonaco)
+    from("${rootDir}/kson/tooling/lsp-clients/monaco/dist")
     into("$projectDir/public/vendor/monaco")
 }
 
-// Task that depends on lib-kotlin Dokka documentation build
+// Build lib-kotlin Dokka documentation in kson submodule
+val buildKotlinDocs by tasks.registering(Exec::class) {
+    workingDir = file("${rootDir}/kson")
+    commandLine = listOf("./gradlew", ":lib-kotlin:dokkaHtml")
+}
+
+// Task that copies lib-kotlin Dokka documentation build
 val copyKotlinApiDocs by tasks.registering(Copy::class) {
-    dependsOn(":lib-kotlin:dokkaHtml")
-    from("${project(":lib-kotlin").layout.buildDirectory.get()}/dokka")
+    dependsOn(buildKotlinDocs)
+    from("${rootDir}/kson/lib-kotlin/build/dokka")
     into("$projectDir/public/api-docs")
 }
 
@@ -81,21 +99,23 @@ val copyAssetsForDocs by tasks.registering {
 }
 
 // Task to build documentation with MkDocs
-val buildDocs by tasks.pixiExec("buildDocs", "mkdocs", "build", "--clean") {
+val buildDocs by tasks.registering(Exec::class) {
     group = "documentation"
     description = "Build documentation with MkDocs"
     
     dependsOn(copyAssetsForDocs)
     
-    workingDirectory.set(file("$projectDir/mkdocs"))
+    workingDir = file("$projectDir/mkdocs")
+    commandLine = listOf("pixi", "run", "mkdocs", "build", "--clean")
 }
 
 // Task to serve the entire website
-val serveSite by tasks.pixiExec("serveSite", "python", "-m", "http.server", "8000") {
+val serveSite by tasks.registering(Exec::class) {
     group = "documentation"
     description = "Serve the complete KSON website including docs"
     
-    workingDirectory.set(file("$projectDir/public"))
+    workingDir = file("$projectDir/public")
+    commandLine = listOf("pixi", "run", "python", "-m", "http.server", "8000")
     
     doFirst {
         println("Starting KSON website server at http://localhost:8000")
@@ -104,13 +124,14 @@ val serveSite by tasks.pixiExec("serveSite", "python", "-m", "http.server", "800
 }
 
 // Task to serve documentation only with live reload (for docs development)
-val serveDocs by tasks.pixiExec("serveDocs", "mkdocs", "serve", "--dev-addr=localhost:8001") {
+val serveDocs by tasks.registering(Exec::class) {
     group = "documentation"
     description = "Serve documentation only with live reload"
     
     dependsOn(copyAssetsForDocs)
     
-    workingDirectory.set(file("$projectDir/mkdocs"))
+    workingDir = file("$projectDir/mkdocs")
+    commandLine = listOf("pixi", "run", "mkdocs", "serve", "--dev-addr=localhost:8001")
     
     doFirst {
         println("Starting MkDocs server at http://localhost:8001/docs/")
@@ -118,12 +139,18 @@ val serveDocs by tasks.pixiExec("serveDocs", "mkdocs", "serve", "--dev-addr=loca
     }
 }
 
+// Build lib-kotlin JVM in kson submodule for validation
+val buildKsonJvmLibrary by tasks.registering(Exec::class) {
+    workingDir = file("${rootDir}/kson")
+    commandLine = listOf("./gradlew", ":lib-kotlin:compileKotlinJvm")
+}
+
 // Task to validate KSON code blocks in markdown files
 val validateDocsKson by tasks.registering(JavaExec::class) {
     group = "documentation"
     description = "Validates KSON code blocks in markdown files using lib-kotlin parser"
     
-    dependsOn(":lib-kotlin:compileKotlinJvm", "compileKotlin")
+    dependsOn(buildKsonJvmLibrary, "compileKotlin")
     
     val docsDir = file("$projectDir/mkdocs/docs")
     inputs.dir(docsDir)

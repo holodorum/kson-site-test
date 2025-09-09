@@ -19,7 +19,7 @@ mkdocs = "1.6.*"
 
 [pypi-dependencies]
 # Use custom fork of mkdocs-material from submodule
-mkdocs-material = { path = "mkdocs-material-kson", editable = true }
+mkdocs-material = { path = "../mkdocs-material-kson", editable = true }
 ## Override the conda pygments with our custom fork from submodule
 ## This should take precedence over the conda version
-pygments = { path = "pygments-kson", editable = true }
+pygments = { path = "../pygments-kson", editable = true }
