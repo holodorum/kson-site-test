@@ -1,0 +1,8 @@
+# comments are preserved!
+%sql: "server=10.0.1.174;uid=root;database=company"
+SELECT first_name, last_name, hire_date
+  FROM employees
+ WHERE department = 'Sales'
+   AND hire_date < '2020-01-01'
+ ORDER BY hire_date ASC;
+%%

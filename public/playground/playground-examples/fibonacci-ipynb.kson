@@ -1,0 +1,129 @@
+# Jupyter Notebook (.ipynb) example in Kson
+#
+# Traditional .ipynb files are stored as JSON.
+# In Kson, we can represent the same structure more readably.
+# Especially for storing cell content the embed blocks are powerful.
+#
+# Transpiling this to JSON, without retaining the embed tags, results
+# in a valid jupyter notebook.
+metadata:
+  kernelspec:
+    display_name: 'Python 3'
+    language: python
+    name: python3
+    .
+  language_info:
+    name: python
+    version: '3.9.7'
+    .
+  .
+nbformat: 4
+nbformat_minor: 5
+cells:
+  # Markdown introduction
+  - cell_type: markdown
+    metadata:
+      tags:
+        - introduction
+      slideshow:
+        slide_type: slide
+        .
+      .
+    source: %markdown
+      # Fibonacci Sequence Calculator
+
+      This notebook implements and demonstrates the Fibonacci sequence.
+      %%
+
+  # Code cell - fibonacci function
+  - cell_type: code
+    execution_count: 1
+    metadata:
+      collapsed: false
+      tags:
+        - 'function-definition'
+      scrolled: false
+      .
+    source: %python
+      def fibonacci(n):
+          """Calculate the nth Fibonacci number"""
+          if n < 0:
+              raise ValueError("Invalid argument")
+          elif n == 0:
+              return 0
+          elif n == 1:
+              return 1
+          else:
+              return fibonacci(n - 1) + fibonacci(n - 2)
+      %%
+    outputs:
+      <>
+
+  # Code cell - test the function
+  - cell_type: code
+    execution_count: 2
+    metadata:
+      tags:
+        - test
+      .
+    source: %python
+      # Generate first 10 Fibonacci numbers
+      fib_sequence = [fibonacci(i) for i in range(10)]
+      print("First 10 Fibonacci numbers:")
+      print(fib_sequence)
+      %%
+    outputs:
+      - name: stdout
+        output_type: stream
+        text: %text
+          First 10 Fibonacci numbers:
+          [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+          %%
+
+      =
+
+  # Code cell - visualize the sequence
+  - cell_type: code
+    execution_count: 3
+    metadata:
+      tags:
+        - visualization
+      scrolled: true
+      source: %python
+        import matplotlib.pyplot as plt
+
+        # Plot the Fibonacci sequence
+        plt.figure(figsize=(10, 6))
+        plt.plot(range(10), fib_sequence, 'bo-', linewidth=2, markersize=8)
+        plt.title('Fibonacci Sequence Growth', fontsize=16)
+        plt.xlabel('n', fontsize=14)
+        plt.ylabel('F(n)', fontsize=14)
+        plt.grid(True, alpha=0.3)
+        plt.show()
+        %%
+      .
+    outputs:
+      - data:
+          'image/png': 'iVBORw0KGgoAAAANSUhEUgAA...'
+          'text/plain': ''
+          .
+        metadata:
+          {}
+        output_type: display_data
+
+      =
+
+  # Markdown conclusion
+  - cell_type: markdown
+    metadata:
+      tags:
+        - conclusion
+      slideshow:
+        slide_type: fragment
+        .
+      .
+    source: %markdown
+      ## Observations
+      
+      The Fibonacci sequence grows exponentially, with each number being the sum of the two preceding ones.
+      %%

@@ -1,0 +1,25 @@
+[workspace]
+authors = ["KSON.org"]
+channels = ["conda-forge"]
+name = "kson-site"
+platforms = [
+    "linux-64",
+    "linux-aarch64",
+    "osx-arm64",
+    "osx-64",
+    "win-64",
+]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
+python = "3.12.*"
+mkdocs = "1.6.*"
+
+[pypi-dependencies]
+# Use custom fork of mkdocs-material from submodule
+mkdocs-material = { path = "mkdocs-material-kson", editable = true }
+## Override the conda pygments with our custom fork from submodule
+## This should take precedence over the conda version
+pygments = { path = "pygments-kson", editable = true }

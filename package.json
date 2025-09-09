@@ -1,0 +1,12 @@
+{
+  "name": "kson-website",
+  "version": "1.0.0",
+  "description": "KSON website and playground",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  }
+}

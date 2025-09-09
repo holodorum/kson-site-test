@@ -1,0 +1,15 @@
+# Paste your JSON in here!  JSON is valid KSON, and can be trivially
+# migrated to KSON's built-in styles with code-lenses above
+{
+  "person": {
+    "name": "Leonardo Bonacci",
+    "favorite_books": [
+      {"title": "Symposium", "author": "Plato"},
+    ],
+    "favorite_numbers": ["(1 + √.5)/2", "π"],
+    "favorite_function": {
+      "embedTag" : "typescript",
+      "embedContent" : "const fib = (n: number): number => n <= 1 ? n : fib(n-1) + fib(n-2);"
+    }
+  }
+}

@@ -1,0 +1,84 @@
+site_name: KSON Documentation
+site_url: https://kson.org/
+site_description: KSON Documentation - A configuration language designed to be an improved interface on plain text data
+site_author: KSON.org
+
+# Directories
+docs_dir: docs
+site_dir: ../public/docs
+
+# Use absolute URLs for assets
+use_directory_urls: true
+
+# Theme configuration
+theme:
+  name: material
+  custom_dir: overrides
+  logo: ../assets/images/kson_logo_blue.svg
+  favicon: ../assets/images/kson_logo_blue.svg
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.instant
+    - navigation.tracking
+    - toc.follow
+    - toc.integrate
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+  palette:
+    - scheme: default
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+# Extensions
+markdown_extensions:
+  - toc:
+      permalink: true
+  - admonition
+  - pymdownx.highlight:
+      use_pygments: true
+      anchor_linenums: true
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - attr_list
+  - md_in_html
+
+# Extra CSS
+extra_css:
+  - ../css/styles.css
+
+# Navigation
+nav:
+  - Overview: index.md
+  # Future pages can be added here:
+  # - Syntax Guide: syntax.md
+  # - API Reference: api.md
+  # - Examples: examples.md
+
+# Search
+plugins:
+  - search:
+      lang: en
+
+# Extra configuration  
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/kson-org/kson
+  generator: false  # Don't show "Made with Material for MkDocs"
+  base_url: /docs/

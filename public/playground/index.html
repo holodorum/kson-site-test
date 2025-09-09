@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KSON Playground</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../vendor/monaco/kson-monaco.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <script type="module" src="../js/kson-playground.js"></script>
+    <link rel="icon" type="image/x-icon" href="../assets/images/kson_logo_blue.svg">
+</head>
+<body class="playground-body">
+    <nav class="navbar">
+        <div class="nav-container">
+            <img src="../assets/images/kson_logo_blue.svg" alt="KSON Logo" class="nav-logo">
+            <div class="nav-links">
+                <a href="/" class="nav-btn">Home</a>
+                <a href="/docs/" class="nav-btn">Docs</a>
+                <a href="https://github.com/kson-org/kson" class="nav-btn" target="_blank" rel="noopener">GitHub</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="playground-main">
+            <!-- Code Editors -->
+            <div class="playground-comparison">
+                <!-- Input Editor -->
+                <div class="code-comparison-item">
+                    <div class="editor-header flex justify-between mb-sm">
+                        <h4>Write KSON here</h4>
+                        <!-- Example Selector -->
+                        <div class="example-controls">
+                            <select id="example-selector" class="example-selector">
+                                <option value="">Examples</option>
+                                <option value="fibonacci">Fibonacci Sequence</option>
+                                <option value="fibonacci-json">JSON Superset</option>
+                                <option value="fibonacci-ipynb">fibonacci.ipynb</option>
+                                <option value="dbt">dbt Model</option>
+                                <option value="embed-sql">SQL Embed Block</option>
+                                <option value="formatter-compact">Compact Formatting</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="kson-editor">
+                        <div class="kson-editor has-titlebar" data-mode="plain">
+                            <div class="kson-editor-titlebar">
+                                <div class="kson-editor-controls">
+                                    <span class="kson-editor-control close"></span>
+                                    <span class="kson-editor-control minimize"></span>
+                                    <span class="kson-editor-control maximize"></span>
+                                </div>
+                            </div>
+                            <span class="code-language-label">KSON</span>
+                            <pre id="input-editor" class="kson hljs"
+                                 data-controller="snippet" data-snippet-copy="false"
+                                 data-editable="true"><code>Loading...</code></pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Output Editor -->
+                <div class="code-comparison-item">
+                    <div class="editor-header flex gap-md justify-end mb-sm">
+                        <h4>See it transform to</h4>
+                        <div class="format-toggle">
+                            <label>
+                                <input type="radio" name="output-format" value="json" id="json-radio" checked>
+                                <span>JSON</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="output-format" value="yaml" id="yaml-radio">
+                                <span>YAML</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="playground-editor">
+                        <div class="kson-editor has-titlebar">
+                            <div class="kson-editor-titlebar">
+                                <div class="kson-editor-controls">
+                                    <span class="kson-editor-control close"></span>
+                                    <span class="kson-editor-control minimize"></span>
+                                    <span class="kson-editor-control maximize"></span>
+                                </div>
+                            </div>
+                            <span class="code-language-label" id="output-language-label">JSON</span>
+                            <pre id="output-editor" class="kson hljs"
+                                 data-controller="snippet" data-snippet-copy="false"
+                                 data-editable="true"><code>Loading...</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </main>
+</body>
+</html>

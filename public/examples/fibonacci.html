@@ -1,0 +1,38 @@
+<span class="hljs-comment"># whitespace is NOT significant!</span>
+<span class="hljs-attr">person</span>:
+  <span class="hljs-attr">name</span>: <span class="hljs-string">'Leonardo Bonacci'</span>
+  <span class="hljs-attr">nickname</span>: <span class="hljs-string">Fibonacci</span>
+  <span class="hljs-attr">favorite_books</span>:
+    - <span class="hljs-attr">title</span>: <span class="hljs-string">Elements</span>
+      <span class="hljs-attr">author</span>: <span class="hljs-string">Euclid</span>
+
+    - <span class="hljs-attr">title</span>: <span class="hljs-string">Metaphysics</span>
+      <span class="hljs-attr">author</span>: <span class="hljs-string">Aristotle</span>
+      .
+  <span class="hljs-attr">favorite_numbers</span>:
+    - - <span class="hljs-number">0</span>
+      - <span class="hljs-number">1</span>
+      - <span class="hljs-number">1</span>
+      - <span class="hljs-number">2</span>
+      - <span class="hljs-string">'...'</span>
+      =
+    - <span class="hljs-string">'(1 + √.5)/2'</span>
+    - <span class="hljs-string">π</span>
+  <span class="hljs-comment"># A Kson "embed block" containing TypeScript code</span>
+  <span class="hljs-attr">favorite_function</span>: <span class="hljs-meta">%typescript</span>
+    <span class="hljs-comment">/**
+     * Calculates the nth number in the Fibonacci sequence using
+     * recursion
+     */</span>
+    <span class="hljs-keyword">function</span> <span class="hljs-title function_">fibonacci</span>(<span class="hljs-params">n: <span class="hljs-built_in">number</span></span>): <span class="hljs-built_in">number</span> {
+      <span class="hljs-keyword">if</span> (n &lt; <span class="hljs-number">0</span>) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">"Invalid argument"</span>)
+      <span class="hljs-keyword">switch</span> (n) {
+        <span class="hljs-keyword">case</span> <span class="hljs-number">0</span>:
+          <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>
+        <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:
+          <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>
+        <span class="hljs-attr">default</span>:
+          <span class="hljs-keyword">return</span> <span class="hljs-title function_">fibonacci</span>(n - <span class="hljs-number">1</span>) + <span class="hljs-title function_">fibonacci</span>(n - <span class="hljs-number">2</span>)
+      }
+    }
+    <span class="hljs-meta">%%</span>

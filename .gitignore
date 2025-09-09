@@ -1,0 +1,22 @@
+node_modules/
+build/
+.gradle/
+gradle
+.flag
+.idea
+
+pixiw
+pixiw.bat
+
+# MkDocs build output (handled by public/docs)
+site/
+
+# Copied assets (generated during build)
+mkdocs/docs/assets/
+mkdocs/docs/css/
+
+# Build outputs
+public/docs/
+public/api-docs/
+public/vendor/
+public/js/

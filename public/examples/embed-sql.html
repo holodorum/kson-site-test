@@ -1,0 +1,8 @@
+<span class="hljs-comment"># comments are preserved!</span>
+<span class="hljs-meta">%sql: "server=10.0.1.174;uid=root;database=company"</span>
+<span class="hljs-keyword">SELECT</span> first_name, last_name, hire_date
+  <span class="hljs-keyword">FROM</span> employees
+ <span class="hljs-keyword">WHERE</span> department = <span class="hljs-string">'Sales'</span>
+   <span class="hljs-keyword">AND</span> hire_date &lt; <span class="hljs-string">'2020-01-01'</span>
+ <span class="hljs-keyword">ORDER BY</span> hire_date <span class="hljs-keyword">ASC</span>;
+<span class="hljs-meta">%%</span>
