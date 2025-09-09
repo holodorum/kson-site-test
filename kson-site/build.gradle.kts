@@ -20,6 +20,7 @@ buildscript {
 }
 
 repositories {
+    mavenLocal()
     mavenCentral()
 }
 
@@ -31,40 +32,40 @@ dependencies {
 
 // Build lib-kotlin JavaScript production in kson submodule
 val buildKsonJsLibrary by tasks.registering(Exec::class) {
-    workingDir = file("${rootDir}/kson")
+    workingDir = file("${rootDir}/../kson")
     commandLine = listOf("./gradlew", ":lib-kotlin:jsBrowserProductionLibraryDistribution")
 }
 
 // Task that copies lib-kotlin JavaScript production build
 val copyKsonApiAssets by tasks.registering(Copy::class) {
     dependsOn(buildKsonJsLibrary)
-    from("${rootDir}/kson/lib-kotlin/build/dist/js/productionLibrary")
+    from("${rootDir}/../kson/lib-kotlin/build/dist/js/productionLibrary")
     into("$projectDir/public/vendor/kson-api")
 }
 
 // Build monaco in kson submodule
 val buildMonaco by tasks.registering(Exec::class) {
-    workingDir = file("${rootDir}/kson")
+    workingDir = file("${rootDir}/../kson")
     commandLine = listOf("./gradlew", ":tooling:lsp-clients:npm_run_buildMonaco")
 }
 
 // Task that copies monaco build
 val copyMonacoAssets by tasks.registering(Copy::class) {
     dependsOn(buildMonaco)
-    from("${rootDir}/kson/tooling/lsp-clients/monaco/dist")
+    from("${rootDir}/../kson/tooling/lsp-clients/monaco/dist")
     into("$projectDir/public/vendor/monaco")
 }
 
 // Build lib-kotlin Dokka documentation in kson submodule
 val buildKotlinDocs by tasks.registering(Exec::class) {
-    workingDir = file("${rootDir}/kson")
+    workingDir = file("${rootDir}/../kson")
     commandLine = listOf("./gradlew", ":lib-kotlin:dokkaHtml")
 }
 
 // Task that copies lib-kotlin Dokka documentation build
 val copyKotlinApiDocs by tasks.registering(Copy::class) {
     dependsOn(buildKotlinDocs)
-    from("${rootDir}/kson/lib-kotlin/build/dokka")
+    from("${rootDir}/../kson/lib-kotlin/build/dokka")
     into("$projectDir/public/api-docs")
 }
 
@@ -141,7 +142,7 @@ val serveDocs by tasks.registering(Exec::class) {
 
 // Build lib-kotlin JVM in kson submodule for validation
 val buildKsonJvmLibrary by tasks.registering(Exec::class) {
-    workingDir = file("${rootDir}/kson")
+    workingDir = file("${rootDir}/../kson")
     commandLine = listOf("./gradlew", ":lib-kotlin:compileKotlinJvm")
 }
 
