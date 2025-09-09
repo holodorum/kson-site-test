@@ -1,0 +1,11 @@
+[submodule "kson"]
+	path = kson
+	url = https://github.com/kson-org/kson.git
+[submodule "mkdocs-material-kson"]
+	path = mkdocs-material-kson
+	url = https://github.com/holodorum/mkdocs-material-kson.git
+	branch = custom-pygments
+[submodule "pygments-kson"]
+	path = pygments-kson
+	url = https://github.com/holodorum/pygments-kson.git
+	branch = kson-lexer
