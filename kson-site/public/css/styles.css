@@ -264,7 +264,7 @@ body {
 }
 
 .nav-title {
-    font-size: var(--text-5xl);
+    font-size: var(--text-3xl);
     font-weight: 700;
     color: var(--text-primary);
     margin: 0;

@@ -1,24 +1,14 @@
 {% extends "base.html" %}
 
 {% block header %}
-<!-- Custom KSON navbar replacing Material header -->
-<nav class="navbar kson-navbar">
-    <div class="nav-container">
-        <div class="nav-brand">
-            <a href="/" class="nav-logo">
-                <img src="{{ config.theme.logo | url }}" alt="KSON Logo">
-            </a>
-            <h1 class="nav-title">KSON Documentation</h1>
-        </div>
-        <div class="nav-links">
-            <a href="/" class="nav-btn">Home</a>
-            <a href="/docs/" class="nav-btn">Docs</a>
-            <a href="/docs/blog/" class="nav-btn">Blog</a>
-            <a href="/playground/" class="nav-btn">Playground</a>
-            <a href="https://github.com/kson-org/kson" class="nav-btn" target="_blank" rel="noopener">GitHub</a>
-        </div>
-    </div>
-</nav>
+<!-- Include the navbar template via JavaScript -->
+<div id="navbar-container"></div>
+<script>
+fetch('/templates/navbar.html')
+    .then(response => response.text())
+    .then(html => document.getElementById('navbar-container').innerHTML = html)
+    .catch(error => console.error('Error loading navbar:', error));
+</script>
 {% endblock %}
 
 {% block footer %}

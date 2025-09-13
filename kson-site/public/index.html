@@ -12,20 +12,13 @@
     <link rel="icon" type="image/x-icon" href="./assets/images/kson_logo_blue.svg">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-brand">
-                <img src="./assets/images/kson_logo_blue.svg" alt="KSON Logo" class="nav-logo">
-                <h1 class="nav-title">KSON Structured Object Notation</h1>
-            </div>
-            <div class="nav-links">
-                <a href="./playground/index.html" class="nav-btn">Playground</a>
-                <a href="./docs/" class="nav-btn">Docs</a>
-                <a href="./docs/blog/" class="nav-btn">Blog</a>
-                <a href="https://github.com/kson-org/kson" class="nav-btn" target="_blank" rel="noopener">GitHub</a>
-            </div>
-        </div>
-    </nav>
+    <!-- Include the navbar template -->
+    <div id="navbar-container"></div>
+    <script>
+        fetch('/templates/navbar.html')
+            .then(response => response.text())
+            .then(html => document.getElementById('navbar-container').innerHTML = html);
+    </script>
     <section class="hero">
         <div class="hero-container">
             <div class="hero-content">
