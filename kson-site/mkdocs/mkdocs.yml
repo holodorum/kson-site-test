@@ -66,6 +66,7 @@ extra_css:
 nav:
   - Docs:
       - Overview: index.md
+      - Getting Started: install.md
       # Future docs pages can be added here:
       # - Syntax Guide: syntax.md
       # - API Reference: api.md
