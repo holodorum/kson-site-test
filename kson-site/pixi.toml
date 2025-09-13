@@ -23,3 +23,4 @@ mkdocs-material = { path = "../mkdocs-material-kson", editable = true }
 ## Override the conda pygments with our custom fork from submodule
 ## This should take precedence over the conda version
 pygments = { path = "../pygments-kson", editable = true }
+mkdocs-rss-plugin = ">=1.17.3, <2"

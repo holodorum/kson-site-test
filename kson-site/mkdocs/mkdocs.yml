@@ -80,6 +80,8 @@ plugins:
       blog_dir: blog
       authors: true
       authors_file: blog/.authors.yml
+  - rss:
+      match_path: blog/posts/.*
 
 # Extra configuration  
 extra:
