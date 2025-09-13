@@ -4,6 +4,7 @@ site/
 # Copied assets (generated during build)
 mkdocs/docs/assets/
 mkdocs/docs/css/
+mkdocs/templates
 
 # Build outputs
 public/docs/

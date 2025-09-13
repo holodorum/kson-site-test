@@ -96,6 +96,11 @@ val copyAssetsForDocs by tasks.registering {
             from("$projectDir/public/assets")
             into("$projectDir/mkdocs/docs/assets")
         }
+        // Copy templates to public directory for serving
+        copy {
+            from("$projectDir/public/templates")
+            into("$projectDir/mkdocs/templates")
+        }
     }
 }
 
