@@ -21,8 +21,10 @@ theme:
     - navigation.tabs.sticky
     - navigation.instant
     - navigation.tracking
+    - navigation.sections
+    - navigation.expand
     - toc.follow
-    - toc.integrate
+    - toc.integrate  # Integrate TOC into left navigation
     - search.suggest
     - search.highlight
     - content.code.copy
@@ -44,6 +46,7 @@ theme:
 markdown_extensions:
   - toc:
       permalink: true
+      toc_depth: 3
   - admonition
   - pymdownx.highlight:
       use_pygments: true
@@ -64,11 +67,11 @@ extra_css:
 
 # Navigation
 nav:
-  - Docs:
+  - Documentation:
       - Overview: index.md
       - Getting Started: install.md
+      - Syntax & Grammar: syntax.md
       # Future docs pages can be added here:
-      # - Syntax Guide: syntax.md
       # - API Reference: api.md
       # - Examples: examples.md
   - Blog: blog/index.md
