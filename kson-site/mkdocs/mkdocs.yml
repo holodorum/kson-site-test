@@ -17,8 +17,8 @@ theme:
   logo: ../assets/images/kson_logo_blue.svg
   favicon: ../assets/images/kson_logo_blue.svg
   features:
-    - navigation.sections
-    - navigation.expand
+    - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.instant
     - navigation.tracking
     - toc.follow
@@ -64,16 +64,22 @@ extra_css:
 
 # Navigation
 nav:
-  - Overview: index.md
-  # Future pages can be added here:
-  # - Syntax Guide: syntax.md
-  # - API Reference: api.md
-  # - Examples: examples.md
+  - Docs:
+      - Overview: index.md
+      # Future docs pages can be added here:
+      # - Syntax Guide: syntax.md
+      # - API Reference: api.md
+      # - Examples: examples.md
+  - Blog: blog/index.md
 
 # Search
 plugins:
   - search:
       lang: en
+  - blog:
+      blog_dir: blog
+      authors: true
+      authors_file: blog/.authors.yml
 
 # Extra configuration  
 extra:
