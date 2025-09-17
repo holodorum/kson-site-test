@@ -20,26 +20,25 @@ buildscript {
 }
 
 repositories {
-    mavenLocal()
     mavenCentral()
 }
 
 dependencies {
-    implementation("org.kson:lib-kotlin:1.0-SNAPSHOT")
+    implementation("org.kson:kson:0.1.0-test1")
     testImplementation(kotlin("test"))
     testImplementation(kotlin("test-junit"))
 }
 
-// Build lib-kotlin JavaScript production in kson submodule
+// Build kson-lib JavaScript production in kson submodule
 val buildKsonJsLibrary by tasks.registering(Exec::class) {
     workingDir = file("${rootDir}/../kson")
-    commandLine = listOf("./gradlew", ":lib-kotlin:jsBrowserProductionLibraryDistribution")
+    commandLine = listOf("./gradlew", ":kson-lib:jsBrowserProductionLibraryDistribution")
 }
 
-// Task that copies lib-kotlin JavaScript production build
+// Task that copies kson-lib JavaScript production build
 val copyKsonApiAssets by tasks.registering(Copy::class) {
     dependsOn(buildKsonJsLibrary)
-    from("${rootDir}/../kson/lib-kotlin/build/dist/js/productionLibrary")
+    from("${rootDir}/../kson/kson-lib/build/dist/js/productionLibrary")
     into("$projectDir/public/vendor/kson-api")
 }
 
@@ -133,16 +132,16 @@ val serveDocs by tasks.registering(Exec::class) {
     }
 }
 
-// Build lib-kotlin JVM in kson submodule for validation
+// Build kson-lib JVM in kson submodule for validation
 val buildKsonJvmLibrary by tasks.registering(Exec::class) {
     workingDir = file("${rootDir}/../kson")
-    commandLine = listOf("./gradlew", ":lib-kotlin:compileKotlinJvm")
+    commandLine = listOf("./gradlew", ":kson-lib:compileKotlinJvm")
 }
 
 // Task to validate KSON code blocks in markdown files
 val validateDocsKson by tasks.registering(JavaExec::class) {
     group = "documentation"
-    description = "Validates KSON code blocks in markdown files using lib-kotlin parser"
+    description = "Validates KSON code blocks in markdown files using kson-lib parser"
     
     dependsOn(buildKsonJvmLibrary, "compileKotlin")
     
