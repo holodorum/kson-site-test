@@ -56,19 +56,6 @@ val copyMonacoAssets by tasks.registering(Copy::class) {
     into("$projectDir/public/vendor/monaco")
 }
 
-// Build lib-kotlin Dokka documentation in kson submodule
-val buildKotlinDocs by tasks.registering(Exec::class) {
-    workingDir = file("${rootDir}/../kson")
-    commandLine = listOf("./gradlew", ":lib-kotlin:dokkaHtml")
-}
-
-// Task that copies lib-kotlin Dokka documentation build
-val copyKotlinApiDocs by tasks.registering(Copy::class) {
-    dependsOn(buildKotlinDocs)
-    from("${rootDir}/../kson/lib-kotlin/build/dokka")
-    into("$projectDir/public/api-docs")
-}
-
 // Combined build task that runs all dependencies and copies artifacts
 val buildSite by tasks.registering {
     group = "build"
@@ -79,7 +66,6 @@ val buildSite by tasks.registering {
         validateDocsKson,
         copyKsonApiAssets,
         copyMonacoAssets,
-        copyKotlinApiDocs
     )
 }
 
@@ -119,7 +105,9 @@ val buildDocs by tasks.registering(Exec::class) {
 val serveSite by tasks.registering(Exec::class) {
     group = "documentation"
     description = "Serve the complete KSON website including docs"
-    
+
+    dependsOn(buildSite)
+
     workingDir = file("$projectDir/public")
     commandLine = listOf("pixi", "run", "python", "-m", "http.server", "8000")
     
@@ -175,7 +163,6 @@ val validateDocsKson by tasks.registering(JavaExec::class) {
 // Clean task to remove copied assets
 tasks.clean {
     delete("$projectDir/public/vendor")
-    delete("$projectDir/public/api-docs")
     delete("$projectDir/public/css")
     delete("$projectDir/public/js")
 }
