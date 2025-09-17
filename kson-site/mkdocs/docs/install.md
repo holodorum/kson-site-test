@@ -14,6 +14,7 @@ Install the KSON plugin directly from the JetBrains Marketplace:
 4. Click **Install** and restart the IDE
 
 Features:
+
 - Syntax highlighting
 - Code completion
 - Error detection
@@ -29,6 +30,7 @@ Install the KSON extension from the VS Code Marketplace:
 4. Click **Install**
 
 Features:
+
 - Syntax highlighting
 - Code snippets
 - Format on save
@@ -70,6 +72,7 @@ Try KSON directly in your browser without any installation:
 🌐 **[playground.kson.org](https://playground.kson.org)**
 
 Features:
+
 - Live syntax validation
 - Real-time conversion to JSON/YAML
 - Share configurations via URL
