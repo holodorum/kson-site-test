@@ -1,0 +1,13 @@
+{
+  "name": "kson-lib-kotlin",
+  "version": "1.0.0-SNAPSHOT",
+  "main": "kson-lib-kotlin.mjs",
+  "types": "kson-lib-kotlin.d.ts",
+  "devDependencies": {
+    "typescript": "5.8.3"
+  },
+  "dependencies": {},
+  "peerDependencies": {},
+  "optionalDependencies": {},
+  "bundledDependencies": []
+}

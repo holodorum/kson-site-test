@@ -1,0 +1,940 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="KSON Documentation - A configuration language designed to be an improved interface on plain text data">
+      
+      
+        <meta name="author" content="KSON.org">
+      
+      
+        <link rel="canonical" href="https://kson.org/syntax/">
+      
+      
+        <link rel="prev" href="../install/">
+      
+      
+        <link rel="next" href="../blog/">
+      
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS feed" href="../feed_rss_created.xml">
+        <link rel="alternate" type="application/rss+xml" title="RSS feed of updated content" href="../feed_rss_updated.xml">
+      
+      <link rel="icon" href="../../assets/images/kson_logo_blue.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.19">
+    
+    
+      
+        <title>Syntax & Grammar - KSON Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/styles.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#kson-syntax-grammar" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+<!-- Include the navbar template via JavaScript -->
+<div id="navbar-container"></div>
+<script>
+fetch('/templates/navbar.html')
+    .then(response => response.text())
+    .then(html => document.getElementById('navbar-container').innerHTML = html)
+    .catch(error => console.error('Error loading navbar:', error));
+</script>
+
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="KSON Documentation" class="md-nav__button md-logo" aria-label="KSON Documentation" data-md-component="logo">
+      
+  <img src="../../assets/images/kson_logo_blue.svg" alt="logo">
+
+    </a>
+    KSON Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Documentation
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Documentation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../install/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Syntax & Grammar
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Syntax & Grammar
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#kson-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      KSON Values
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="KSON Values">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nulls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nulls
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#booleans" class="md-nav__link">
+    <span class="md-ellipsis">
+      Booleans
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#numbers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Numbers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Strings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lists
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bracket-lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bracket Lists
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objects
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#embed-blocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Embed Blocks
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#formatting-styles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Formatting Styles
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Formatting Styles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plain-format-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plain Format Example
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delimited-format-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delimited Format Example
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compact-format-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compact Format Example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#json-compatibility-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      JSON Compatibility Notes
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Blog
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="kson-syntax-grammar">KSON Syntax &amp; Grammar<a class="headerlink" href="#kson-syntax-grammar" title="Permanent link">&para;</a></h1>
+<p>A KSON document is a document containing exactly one <a href="#kson-values">KSON Value</a></p>
+<h2 id="kson-values">KSON Values<a class="headerlink" href="#kson-values" title="Permanent link">&para;</a></h2>
+<p>KSON defines the following value types:</p>
+<ul>
+<li><a href="#nulls">Nulls</a></li>
+<li><a href="#booleans">Booleans</a></li>
+<li><a href="#numbers">Numbers</a></li>
+<li><a href="#strings">Strings</a></li>
+<li><a href="#lists">Lists</a></li>
+<li><a href="#objects">Objects</a></li>
+<li><a href="#embed-blocks">Embed blocks</a></li>
+</ul>
+<h3 id="nulls">Nulls<a class="headerlink" href="#nulls" title="Permanent link">&para;</a></h3>
+<p>A KSON document representing <code>null</code> is simply:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kc">null</span>
+</code></pre></div>
+<h3 id="booleans">Booleans<a class="headerlink" href="#booleans" title="Permanent link">&para;</a></h3>
+<p>Booleans are written <code>true</code> or <code>false</code>. Here is a KSON document representing a boolean value:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kc">true</span>
+</code></pre></div>
+<h3 id="numbers">Numbers<a class="headerlink" href="#numbers" title="Permanent link">&para;</a></h3>
+<p>Numbers in KSON are identical to <a href="https://datatracker.ietf.org/doc/html/rfc8259#section-6">numbers in JSON</a>, with the
+exception that they may have leading zeros. Here is a KSON document representing a number:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="mf">5</span>
+</code></pre></div>
+<p>Here is a KSON <a href="#lists">list</a> demonstrating a variety of supported numbers:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="mf">5</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="mf">3.14</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="mf">2.998e8</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="mf">025</span>
+</code></pre></div>
+<h3 id="strings">Strings<a class="headerlink" href="#strings" title="Permanent link">&para;</a></h3>
+<p>Strings in KSON are identical to <a href="https://datatracker.ietf.org/doc/html/rfc8259#section-7">strings in JSON</a>, except:</p>
+<ul>
+<li>KSON strings may be unquoted if they are 'simple', i.e. they only contain letters (from any alphabet), numbers or
+  underscores, and they do not start with a number</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="s">an_unqu0t3d_stri</span><span class="err">π</span><span class="s">g</span>
+</code></pre></div>
+<ul>
+<li>KSON strings may be quoted using a single quote rather than a double quote. Here is a <a href="#lists">list</a> of strings
+  demonstrating the difference:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="s1">&#39;A &quot;string&quot;, enclosed in single quotes&#39;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="s2">&quot;A &#39;string&#39;, enclosed in double quotes&quot;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="s1">&#39;use slash to escape </span><span class="se">\&#39;</span><span class="s1">internal</span><span class="se">\&#39;</span><span class="s1"> quotes&#39;</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="s2">&quot;use slash to escape </span><span class="se">\&quot;</span><span class="s2">internal</span><span class="se">\&quot;</span><span class="s2"> quotes&quot;</span>
+</code></pre></div>
+<ul>
+<li>KSON strings may contain raw, unescaped whitespace (though an <a href="#embed-blocks">Embed Block</a> will usually be a better
+  choice for multiline strings due to their editing ergonomics and indent-stripping)</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>&#39;A string with
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>a raw newline.
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    Tabs are also A-OK 👌&#39;
+</code></pre></div>
+<h3 id="lists">Lists<a class="headerlink" href="#lists" title="Permanent link">&para;</a></h3>
+<p>A list in Kson is a sequence of <a href="#kson-values">Kson Values</a>.</p>
+<p>KSON supports three list styles:</p>
+<ul>
+<li><a href="#plain-dash-lists">Plain Dash Lists</a>, a clean YAML-like list style useful for clarity and readability</li>
+<li><a href="#delimited-dash-lists">Delimited Dash Lists</a>, a delimited version of <a href="#plain-dash-lists">Plain Dash Lists</a> useful
+  when editing or refactoring complex nested lists</li>
+<li><a href="#bracket-lists">Bracket Lists</a> a JSON-like list style useful for compacting lists and required for JSON compatibility</li>
+</ul>
+<h4 id="plain-dash-lists">Plain Dash Lists<a class="headerlink" href="#plain-dash-lists" title="Permanent link">&para;</a></h4>
+<p>A Plain Dash List is a clean YAML-like un-delimited list useful for clarity and readability. This is the style used in
+Kson's <a href="#plain-format-example">plain format</a>.</p>
+<p>A plain dash list is un-delimited, denotes each list element with a <code>-</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">element_one</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">element_two</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">element_three</span>
+</code></pre></div>
+<p>A empty list is expressed as: <code>&lt;&gt;</code></p>
+<p>Plain dash lists may be nested like so:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">outer_element</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="p p-Indicator">-</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">nested_element_1</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">nested_element_2</span>
+</code></pre></div>
+<p>Important: unlike YAML, <strong>whitespace is not significant in KSON</strong>, so to add more outer elements to the above list, we
+must explicitly end the nested list with <code>=</code>, the <a href="#the-end-dash">end-dash</a>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">outer_element</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="p p-Indicator">-</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">nested_element_1</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">nested_element_2</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">  </span><span class="p p-Indicator">=</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">outer_element_2</span>
+</code></pre></div>
+<h5 id="the-end-dash">The end-dash <code>=</code><a class="headerlink" href="#the-end-dash" title="Permanent link">&para;</a></h5>
+<p>The end-dash <code>=</code> explicitly declares the end of a <a href="#plain-dash-lists">Plain Dash List</a>. The end-dash is only required
+when a nested <a href="#plain-dash-lists">Plain Dash List</a> needs to explicitly denote the end of the items that belong to it:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">outer_element_1</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="p p-Indicator">-</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">nested_element_1</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">nested_element_2</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">  </span><span class="p p-Indicator">=</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="c1"># note that without the end-dash, `outer_element_2` would belong to the nested list</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">outer_element_2</span>
+</code></pre></div>
+<p>The <a href="#the-end-dot">end-dot <code>.</code></a> works analogously for <a href="#plain-objects">Plain Objects</a>.</p>
+<h4 id="delimited-dash-lists">Delimited Dash Lists<a class="headerlink" href="#delimited-dash-lists" title="Permanent link">&para;</a></h4>
+<p>A Delimited Dash List is a delimited version of a <a href="#plain-dash-lists">Plain Dash List</a>, useful when editing or
+refactoring complex nested lists&mdash;for instance, these lists can be safely and unambiguously copy/pasted around.</p>
+<p>Delimited Dash Lists are delimited with angle brackets <code>&lt;...&gt;</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="p p-Indicator">&lt;</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">outer_element1</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">&lt;</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">nested_element_1</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">nested_element_2</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">    </span><span class="p p-Indicator">&gt;</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">outer_element_2</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="p p-Indicator">&gt;</span>
+</code></pre></div>
+<p>An empty list is expressed as: <code>&lt;&gt;</code></p>
+<p>This style is used in Kson's <a href="#delimited-format-example">delimited format</a></p>
+<h3 id="bracket-lists">Bracket Lists<a class="headerlink" href="#bracket-lists" title="Permanent link">&para;</a></h3>
+<p>A Bracket List is a JSON-like list useful for supporting <a href="#compact-format-example">compact formatted</a> lists and required
+for JSON compatibility.</p>
+<p>Bracket Lists are delimited with square brackets <code>[...]</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="p">[</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">  </span><span class="s">outer_element1</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">  </span><span class="p">[</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">      </span><span class="s">nested_element_1</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">      </span><span class="s">nested_element_2</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">  </span><span class="p">]</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">  </span><span class="s">outer_element_2</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="p">]</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Commas are supported between elements, but they are unnecessary and generally formatted away.
+See <a href="#commas-in-kson">Commas in Kson</a> for detail</p>
+</div>
+<h3 id="objects">Objects<a class="headerlink" href="#objects" title="Permanent link">&para;</a></h3>
+<p>Object properties in KSON are <code>key: value</code> pairs where <code>key</code> is a <a href="#strings">String</a> and <code>value</code> is
+any <a href="#kson-values">Kson Value</a>.</p>
+<p>KSON supports two object styles:</p>
+<ul>
+<li><a href="#plain-objects">Plain Objects</a>, a clean YAML-like un-delimited object style useful for clarity and readability</li>
+<li><a href="#delimited-objects">Delimited Objects</a>, a JSON-like delimited version of <a href="#plain-objects">Plain Objects</a> useful when
+  editing or refactoring complex nested objects&mdash;for instance, these objects can be safely and unambiguously
+  copy/pasted around</li>
+</ul>
+<h4 id="plain-objects">Plain Objects<a class="headerlink" href="#plain-objects" title="Permanent link">&para;</a></h4>
+<p>A plain object in KSON is a clean YAML-like un-delimited object style useful for clarity and readability.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nt">property_one</span><span class="p">:</span><span class="w"> </span><span class="mf">1</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="nt">property_two</span><span class="p">:</span><span class="w"> </span><span class="mf">2</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="nt">property_three</span><span class="p">:</span><span class="w"> </span><span class="mf">3</span>
+</code></pre></div>
+<p>An empty object is expressed as: <code>{}</code></p>
+<p>Plain objects may be nested like so:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nt">outer_property</span><span class="p">:</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">  </span><span class="nt">nested_property_1</span><span class="p">:</span><span class="w"> </span><span class="mf">1</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">  </span><span class="nt">nested_property_2</span><span class="p">:</span><span class="w"> </span><span class="mf">2</span>
+</code></pre></div>
+<p>Important: unlike YAML, <strong>whitespace is not significant in KSON</strong>, so to add more outer properties to the above object,
+we must explicitly end the nested object with <code>.</code>, the <a href="#the-end-dot">end-dot</a>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nt">outer_property</span><span class="p">:</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">  </span><span class="nt">nested_property_1</span><span class="p">:</span><span class="w"> </span><span class="mf">1</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">  </span><span class="nt">nested_property_2</span><span class="p">:</span><span class="w"> </span><span class="mf">2</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">  </span><span class="p p-Indicator">.</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="nt">outer_property_2</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;not part of the nested object&#39;</span>
+</code></pre></div>
+<h5 id="the-end-dot">The end-dot <code>.</code><a class="headerlink" href="#the-end-dot" title="Permanent link">&para;</a></h5>
+<p>The end-dot <code>.</code> explicitly declares the end of a <a href="#plain-objects">Plain Object</a>. The end-dot is only required when
+a <a href="#plain-objects">Plain Object</a> needs to explicitly denote the end of the properties that belong to it, i.e.:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nt">outer_property_1</span><span class="p">:</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">  </span><span class="nt">nested_property_1</span><span class="p">:</span><span class="w"> </span><span class="s">x</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">  </span><span class="nt">nested_element_2</span><span class="p">:</span><span class="w"> </span><span class="s">y</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">  </span><span class="p p-Indicator">.</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="c1"># note that without the end-dot, `outer_element_2` would belong to the nested object</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="nt">outer_element_2</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;a value&#39;</span>
+</code></pre></div>
+<p>The <a href="#the-end-dash">end-dash <code>=</code></a> works analogously for <a href="#plain-dash-lists">Plain Dash Lists</a>.</p>
+<h4 id="delimited-objects">Delimited Objects<a class="headerlink" href="#delimited-objects" title="Permanent link">&para;</a></h4>
+<p>A Delimited Object is a a JSON-like delimited version of <a href="#plain-objects">Plain Objects</a> useful when editing or
+refactoring complex nested
+objects.</p>
+<p>Delimited Objects are delimited with curly braces <code>{...}</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="p">{</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">  </span><span class="nt">outer_property_1</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">      </span><span class="nt">nested_property_1</span><span class="p">:</span><span class="w"> </span><span class="s">x</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="w">      </span><span class="nt">nested_element_2</span><span class="p">:</span><span class="w"> </span><span class="s">y</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="w">  </span><span class="nt">outer_element_2</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;a value&#39;</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="p">}</span>
+</code></pre></div>
+<p>An empty object is expressed as: <code>{}</code></p>
+<p>This style is used in Kson's <a href="#delimited-format-example">delimited format</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Commas are supported between properties, but they are unnecessary and generally formatted away.
+See <a href="#commas-in-kson">Commas in Kson</a> for detail</p>
+</div>
+<h3 id="embed-blocks">Embed Blocks<a class="headerlink" href="#embed-blocks" title="Permanent link">&para;</a></h3>
+<p>The KSON Embed Block is designed for ergonomically embedding complex content such as code
+blocks. These blocks start on the first newline after the opening <code>%</code>, run all the way up
+to the closing <code>%%</code> and always strip their minimum indent:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nt">embed_block</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">%</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="ge">  Free form,</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="ge">  multi-line,</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="ge">  indent-stripped</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="ge">  embedded text block!</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="ge">  %%</span>
+</code></pre></div>
+<p><a href="#embed-blocks">Embed blocks</a> often feature an <a href="#embed-tags">Embed Tag</a> denoting the type of text being embedded. This
+is particularly useful for embedded code so that editors and tooling can key off this value and provide
+language-specific features for a given embed block</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>%typescript
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>function fibonacci(n: number): number {
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>  if (n &lt;= 0) return 0;
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>  if (n === 1) return 1;
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>    return fibonacci(n - 1) + fibonacci(n - 2);
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>  }
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>%%
+</code></pre></div>
+<p>See <a href="#the-embed-preamble">Embed Preamble</a> for full details on the metadata supported by <a href="#embed-blocks">Embed Blocks</a></p>
+<h4 id="escaping-embed-delimiters">Escaping Embed Delimiters<a class="headerlink" href="#escaping-embed-delimiters" title="Permanent link">&para;</a></h4>
+<p>The rules for escaping embed block delimiters are as follows:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nt">embed_escapes</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">%</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="ge">  Embed end-delimiters are escaped by putting a slash inside them: %\%</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="ge">  Note that this moves the escaping goalpost since we also need to allow &quot;%\%&quot;</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="ge">  literally inside of embeds.  So: when evaluating escaped embed delimiters,</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="ge">  we allow arbitrary `\`s between `%`s, and consume one of them.  Thus, %\\%</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="ge">  gives %\% in the output, %\\\% gives %\\% in the output, etc forever until</span>
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="ge">  we hit an uninterrupted end-delimiter:</span>
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="ge">  %%</span>
+</code></pre></div></p>
+<h4 id="alternative-embed-block-delimiter">Alternative Embed Block Delimiter<a class="headerlink" href="#alternative-embed-block-delimiter" title="Permanent link">&para;</a></h4>
+<p>The alternative embed delimiter <code>$</code> works identically to <code>%</code> and can be used when convenient to minimize
+escaping</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>alternate_embed: $kson
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>  This embed block is equivalent to a %/%%-delimited block, but here &quot;$/$&quot;
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>  must be escaped rather than &quot;%%&quot;
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>$$
+</code></pre></div>
+<h4 id="the-embed-preamble">The Embed Preamble<a class="headerlink" href="#the-embed-preamble" title="Permanent link">&para;</a></h4>
+<p>The Embed Preamble may be provided to annotate the embedded content. An Embed Preamble is made of two parts:</p>
+<ul>
+<li>the <a href="#embed-tags">Embed Tag</a>, which denotes the content type</li>
+<li>the <a href="#embed-metadata">Embed Metadata</a>, arbitrary metadata given after the first colon <code>:</code> in
+  the <a href="#the-embed-preamble">Embed Preamble</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>%text: sample block
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>This is a sample block of type `text`, as noted in its Embed Preamble.
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>%% 
+</code></pre></div>
+<p>An empty <a href="#the-embed-preamble">Embed Preamble</a> simply indicates an embed of raw text. When appropriate, it's recommended to include a tag or metadata to provide context about the embedded content.</p>
+<h5 id="embed-tags">Embed Tags<a class="headerlink" href="#embed-tags" title="Permanent link">&para;</a></h5>
+<p><a href="#embed-blocks">Embed Blocks</a> can denote the type of content being embedded using an Embed Tag. Embed Tags appear at the
+beginning of the <a href="#the-embed-preamble">Embed Preamble</a> and may not contain newlines or colons.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="p p-Indicator">%</span><span class="nt">sql</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">hire_date</span>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Sales&#39;</span><span class="w"> </span>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">hire_date</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="s1">&#39;2020-01-01&#39;</span>
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">hire_date</span><span class="w"> </span><span class="k">ASC</span><span class="p">;</span>
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="ge">%%</span>
+</code></pre></div>
+<p>While KSON does not specify which tags are legal, KSON does specify that <a href="#embed-tags">Embed Tags</a> are intended to
+denote the type of embedded content, and they intended to enable tooling enhancements for the embedded content&mdash;for
+instance to properly highlight the embedded content, or to automatically inject
+a <a href="https://www.jetbrains.com/help/idea/using-language-injections.html#language_annotation">full-on embedded editor</a>.
+See <a href="#embed-metadata">Embed Metadata</a> for syntax to arbitrarily embellish this tag.</p>
+<h5 id="embed-metadata">Embed Metadata<a class="headerlink" href="#embed-metadata" title="Permanent link">&para;</a></h5>
+<p><a href="#embed-blocks">Embed Blocks</a> may have a string of arbitrary metadata associated with them. Embed Metadata is given
+after the first colon in the <a href="#the-embed-preamble">Embed Preamble</a>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="p p-Indicator">%</span><span class="p">:</span><span class="na">Captain&#39;s log, Stardate 4523.3 </span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="ge">Deep Space Station K-7 has issued a priority one call. More than an emergency,</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="ge">it signals near or total disaster. We can only assume the Klingons have attacked</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="ge">the station. We&#39;re going in armed for battle.</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="ge">%%</span>
+</code></pre></div>
+<p><a href="#embed-metadata">Embed Metadata</a> is often used in conjunction with an <a href="#embed-tags">Embed Tag</a>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="p p-Indicator">%</span><span class="nt">sql</span><span class="p">:</span><span class="na"> &quot;server=10.0.1.174;uid=root;database=company&quot;</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">hire_date</span>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span>
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Sales&#39;</span>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="w">   </span><span class="k">AND</span><span class="w"> </span><span class="n">hire_date</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="s1">&#39;2020-01-01&#39;</span>
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">hire_date</span><span class="w"> </span><span class="k">ASC</span><span class="p">;</span>
+<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="ge">%%</span>
+</code></pre></div>
+<h2 id="formatting-styles">Formatting Styles<a class="headerlink" href="#formatting-styles" title="Permanent link">&para;</a></h2>
+<p>KSON has a built-in auto-formatter that supports <strong>three opinionated styles</strong>. These three "views" on the same data
+serve
+different roles:</p>
+<ul>
+<li><a href="#plain-format-example">Plain format</a>, a lean format reminiscent of YAML. This is KSON's default format, useful for
+  clarity
+  and
+  readability</li>
+<li><a href="#delimited-format-example">Delimited format</a>, an explicit format reminiscent of JSON, useful when editing or
+  refactoring
+  complex
+  nested data</li>
+<li><a href="#compact-format-example">Compact format</a>, a minified format to facilitate compression and transport</li>
+</ul>
+<h3 id="plain-format-example">Plain Format Example<a class="headerlink" href="#plain-format-example" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="nt">person</span><span class="p">:</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Leonardo Bonacci&#39;</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="w">  </span><span class="nt">nickname</span><span class="p">:</span><span class="w"> </span><span class="s">Fibonacci</span>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="w">  </span><span class="nt">favorite_books</span><span class="p">:</span>
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">Elements</span>
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="w">      </span><span class="nt">author</span><span class="p">:</span><span class="w"> </span><span class="s">Euclid</span>
+<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a>
+<a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">Metaphysics</span>
+<a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a><span class="w">      </span><span class="nt">author</span><span class="p">:</span><span class="w"> </span><span class="s">Aristotle</span>
+<a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a><span class="w">      </span><span class="p p-Indicator">.</span>
+<a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a><span class="w">  </span><span class="nt">favorite_numbers</span><span class="p">:</span>
+<a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span>
+<a id="__codelineno-26-13" name="__codelineno-26-13" href="#__codelineno-26-13"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="mf">0</span>
+<a id="__codelineno-26-14" name="__codelineno-26-14" href="#__codelineno-26-14"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="mf">1</span>
+<a id="__codelineno-26-15" name="__codelineno-26-15" href="#__codelineno-26-15"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="mf">1</span>
+<a id="__codelineno-26-16" name="__codelineno-26-16" href="#__codelineno-26-16"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="mf">2</span>
+<a id="__codelineno-26-17" name="__codelineno-26-17" href="#__codelineno-26-17"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s1">&#39;...&#39;</span>
+<a id="__codelineno-26-18" name="__codelineno-26-18" href="#__codelineno-26-18"></a><span class="w">      </span><span class="p p-Indicator">=</span>
+<a id="__codelineno-26-19" name="__codelineno-26-19" href="#__codelineno-26-19"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s1">&#39;(1 + √5)/2&#39;</span>
+<a id="__codelineno-26-20" name="__codelineno-26-20" href="#__codelineno-26-20"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="err">π</span>
+<a id="__codelineno-26-21" name="__codelineno-26-21" href="#__codelineno-26-21"></a><span class="w">  </span><span class="c1"># A Kson &quot;embed block&quot; containing Kotlin code</span>
+<a id="__codelineno-26-22" name="__codelineno-26-22" href="#__codelineno-26-22"></a><span class="w">  </span><span class="nt">favorite_function</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">%</span><span class="nt">kotlin</span>
+<a id="__codelineno-26-23" name="__codelineno-26-23" href="#__codelineno-26-23"></a><span class="w">      </span><span class="cm">/**</span>
+<a id="__codelineno-26-24" name="__codelineno-26-24" href="#__codelineno-26-24"></a><span class="cm">       * Calculates the nth number in the Fibonacci sequence using recursion</span>
+<a id="__codelineno-26-25" name="__codelineno-26-25" href="#__codelineno-26-25"></a><span class="cm">       */</span>
+<a id="__codelineno-26-26" name="__codelineno-26-26" href="#__codelineno-26-26"></a><span class="w">      </span><span class="kd">fun</span><span class="w"> </span><span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">:</span>
+<a id="__codelineno-26-27" name="__codelineno-26-27" href="#__codelineno-26-27"></a><span class="w">        </span><span class="kt">Int</span><span class="p">):</span><span class="w"> </span><span class="kt">Long</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-26-28" name="__codelineno-26-28" href="#__codelineno-26-28"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="n">IllegalArgumentException</span><span class="p">(</span><span class="s">&quot;Input must be non-negative&quot;</span><span class="p">)</span>
+<a id="__codelineno-26-29" name="__codelineno-26-29" href="#__codelineno-26-29"></a><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-26-30" name="__codelineno-26-30" href="#__codelineno-26-30"></a><span class="w">                </span><span class="m">0</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="m">0</span>
+<a id="__codelineno-26-31" name="__codelineno-26-31" href="#__codelineno-26-31"></a><span class="w">                </span><span class="m">1</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-26-32" name="__codelineno-26-32" href="#__codelineno-26-32"></a><span class="w">                </span><span class="k">else</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">2</span><span class="p">)</span>
+<a id="__codelineno-26-33" name="__codelineno-26-33" href="#__codelineno-26-33"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-26-34" name="__codelineno-26-34" href="#__codelineno-26-34"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-26-35" name="__codelineno-26-35" href="#__codelineno-26-35"></a><span class="w">    </span><span class="ge">%%</span>
+</code></pre></div>
+<h3 id="delimited-format-example">Delimited Format Example<a class="headerlink" href="#delimited-format-example" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="p">{</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="w">  </span><span class="nt">person</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Leonardo Bonacci&#39;</span>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="w">    </span><span class="nt">nickname</span><span class="p">:</span><span class="w"> </span><span class="s">Fibonacci</span>
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="w">    </span><span class="nt">favorite_books</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&lt;</span>
+<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a><span class="w">          </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">Elements</span>
+<a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a><span class="w">          </span><span class="nt">author</span><span class="p">:</span><span class="w"> </span><span class="s">Euclid</span>
+<a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a><span class="w">          </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">Metaphysics</span>
+<a id="__codelineno-27-12" name="__codelineno-27-12" href="#__codelineno-27-12"></a><span class="w">          </span><span class="nt">author</span><span class="p">:</span><span class="w"> </span><span class="s">Aristotle</span>
+<a id="__codelineno-27-13" name="__codelineno-27-13" href="#__codelineno-27-13"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-27-14" name="__codelineno-27-14" href="#__codelineno-27-14"></a><span class="w">    </span><span class="p p-Indicator">&gt;</span>
+<a id="__codelineno-27-15" name="__codelineno-27-15" href="#__codelineno-27-15"></a><span class="w">    </span><span class="nt">favorite_numbers</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&lt;</span>
+<a id="__codelineno-27-16" name="__codelineno-27-16" href="#__codelineno-27-16"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">&lt;</span>
+<a id="__codelineno-27-17" name="__codelineno-27-17" href="#__codelineno-27-17"></a><span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="mf">0</span>
+<a id="__codelineno-27-18" name="__codelineno-27-18" href="#__codelineno-27-18"></a><span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="mf">1</span>
+<a id="__codelineno-27-19" name="__codelineno-27-19" href="#__codelineno-27-19"></a><span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="mf">1</span>
+<a id="__codelineno-27-20" name="__codelineno-27-20" href="#__codelineno-27-20"></a><span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="mf">2</span>
+<a id="__codelineno-27-21" name="__codelineno-27-21" href="#__codelineno-27-21"></a><span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s1">&#39;...&#39;</span>
+<a id="__codelineno-27-22" name="__codelineno-27-22" href="#__codelineno-27-22"></a><span class="w">        </span><span class="p p-Indicator">&gt;</span>
+<a id="__codelineno-27-23" name="__codelineno-27-23" href="#__codelineno-27-23"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s1">&#39;(1 + √5)/2&#39;</span>
+<a id="__codelineno-27-24" name="__codelineno-27-24" href="#__codelineno-27-24"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="err">π</span>
+<a id="__codelineno-27-25" name="__codelineno-27-25" href="#__codelineno-27-25"></a><span class="w">    </span><span class="p p-Indicator">&gt;</span>
+<a id="__codelineno-27-26" name="__codelineno-27-26" href="#__codelineno-27-26"></a><span class="w">    </span><span class="c1"># A Kson &quot;embed block&quot; containing Kotlin code</span>
+<a id="__codelineno-27-27" name="__codelineno-27-27" href="#__codelineno-27-27"></a><span class="w">    </span><span class="nt">favorite_function</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">%</span><span class="nt">kotlin</span>
+<a id="__codelineno-27-28" name="__codelineno-27-28" href="#__codelineno-27-28"></a><span class="w">        </span><span class="cm">/**</span>
+<a id="__codelineno-27-29" name="__codelineno-27-29" href="#__codelineno-27-29"></a><span class="cm">         * Calculates the nth number in the Fibonacci sequence using recursion</span>
+<a id="__codelineno-27-30" name="__codelineno-27-30" href="#__codelineno-27-30"></a><span class="cm">         */</span>
+<a id="__codelineno-27-31" name="__codelineno-27-31" href="#__codelineno-27-31"></a><span class="w">        </span><span class="kd">fun</span><span class="w"> </span><span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">:</span>
+<a id="__codelineno-27-32" name="__codelineno-27-32" href="#__codelineno-27-32"></a><span class="w">          </span><span class="kt">Int</span><span class="p">):</span><span class="w"> </span><span class="kt">Long</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-27-33" name="__codelineno-27-33" href="#__codelineno-27-33"></a><span class="w">                  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="n">IllegalArgumentException</span><span class="p">(</span><span class="s">&quot;Input must be non-negative&quot;</span><span class="p">)</span>
+<a id="__codelineno-27-34" name="__codelineno-27-34" href="#__codelineno-27-34"></a><span class="w">                  </span><span class="k">return</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-27-35" name="__codelineno-27-35" href="#__codelineno-27-35"></a><span class="w">                  </span><span class="m">0</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="m">0</span>
+<a id="__codelineno-27-36" name="__codelineno-27-36" href="#__codelineno-27-36"></a><span class="w">                  </span><span class="m">1</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-27-37" name="__codelineno-27-37" href="#__codelineno-27-37"></a><span class="w">                  </span><span class="k">else</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">2</span><span class="p">)</span>
+<a id="__codelineno-27-38" name="__codelineno-27-38" href="#__codelineno-27-38"></a><span class="w">          </span><span class="p">}</span>
+<a id="__codelineno-27-39" name="__codelineno-27-39" href="#__codelineno-27-39"></a><span class="w">      </span><span class="p">}</span>
+<a id="__codelineno-27-40" name="__codelineno-27-40" href="#__codelineno-27-40"></a><span class="w">      </span><span class="ge">%%</span>
+<a id="__codelineno-27-41" name="__codelineno-27-41" href="#__codelineno-27-41"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-27-42" name="__codelineno-27-42" href="#__codelineno-27-42"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="compact-format-example">Compact Format Example<a class="headerlink" href="#compact-format-example" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="nt">person</span><span class="p">:</span><span class="nt">name</span><span class="p">:</span><span class="s1">&#39;Leonardo Bonacci&#39;</span><span class="nt">nickname</span><span class="p">:</span><span class="s">Fibonacci</span><span class="w"> </span><span class="nt">favorite_books</span><span class="p">:[{</span><span class="nt">title</span><span class="p">:</span><span class="s">Elements</span><span class="w"> </span><span class="nt">author</span><span class="p">:</span><span class="s">Euclid</span><span class="p">}</span><span class="nt">title</span><span class="p">:</span><span class="s">Metaphysics</span><span class="w"> </span><span class="nt">author</span><span class="p">:</span><span class="s">Aristotle.</span><span class="p">]</span><span class="nt">favorite_numbers</span><span class="p">:[[</span><span class="mf">0</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="s1">&#39;...&#39;</span><span class="p">]</span><span class="s1">&#39;(1 + √5)/2&#39;</span><span class="w"> </span><span class="err">π</span><span class="p">]</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="c1"># A Kson &quot;embed block&quot; containing Kotlin code</span>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="nt">favorite_function</span><span class="p">:</span><span class="p p-Indicator">%</span><span class="nt">kotlin</span>
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="w">  </span><span class="cm">/**</span>
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="cm">   * Calculates the nth number in the Fibonacci sequence using recursion</span>
+<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a><span class="cm">   */</span>
+<a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a><span class="w">  </span><span class="kd">fun</span><span class="w"> </span><span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">:</span>
+<a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a><span class="w">    </span><span class="kt">Int</span><span class="p">):</span><span class="w"> </span><span class="kt">Long</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="n">IllegalArgumentException</span><span class="p">(</span><span class="s">&quot;Input must be non-negative&quot;</span><span class="p">)</span>
+<a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a><span class="w">            </span><span class="m">0</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="m">0</span>
+<a id="__codelineno-28-12" name="__codelineno-28-12" href="#__codelineno-28-12"></a><span class="w">            </span><span class="m">1</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-28-13" name="__codelineno-28-13" href="#__codelineno-28-13"></a><span class="w">            </span><span class="k">else</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">2</span><span class="p">)</span>
+<a id="__codelineno-28-14" name="__codelineno-28-14" href="#__codelineno-28-14"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-28-15" name="__codelineno-28-15" href="#__codelineno-28-15"></a><span class="p">}</span>
+<a id="__codelineno-28-16" name="__codelineno-28-16" href="#__codelineno-28-16"></a><span class="ge">%%</span>
+</code></pre></div>
+<h2 id="json-compatibility-notes">JSON Compatibility Notes<a class="headerlink" href="#json-compatibility-notes" title="Permanent link">&para;</a></h2>
+<h4 id="kson-is-a-superset-of-json">KSON is a superset of JSON<a class="headerlink" href="#kson-is-a-superset-of-json" title="Permanent link">&para;</a></h4>
+<p>KSON's status as a superset of JSON is verified
+by <a href="../../../src/commonTest/kotlin/org/kson/parser/json/generated/JsonSuiteTest.kt">JsonSuiteTest.kt</a>, which is generated
+  from <a href="https://github.com/nst/JSONTestSuite">JSONTestSuite</a></p>
+<h4 id="json-schema-support">JSON Schema support<a class="headerlink" href="#json-schema-support" title="Permanent link">&para;</a></h4>
+<p>Kson is compatible with JsonSchema (Draft7, more to come), verified
+  by <a href="../../../src/commonTest/kotlin/org/kson/parser/json/generated/SchemaSuiteTest.kt">SchemaSuiteTest.kt</a>, generated
+  from <a href="https://github.com/json-schema-org/JSON-Schema-Test-Suite">JSON-Schema-Test-Suite</a></p>
+<h4 id="commas-in-kson">Commas in Kson<a class="headerlink" href="#commas-in-kson" title="Permanent link">&para;</a></h4>
+<p>JSON compatibility requires that <a href="#objects">Objects</a> and <a href="#bracket-lists">Bracket Lists</a> in KSON allow commas. However,
+since every <a href="#kson-values">KSON value</a> has a definite beginning and ending, the <strong>commas are unnecessary and generally
+formatted away</strong>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+<!-- Include the footer template via JavaScript -->
+<div id="footer-container"></div>
+<script>
+fetch('/templates/footer.html')
+    .then(response => response.text())
+    .then(html => document.getElementById('footer-container').innerHTML = html)
+    .catch(error => console.error('Error loading footer:', error));
+</script>
+
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "toc.follow", "toc.integrate", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+    
+  </body>
+</html>
